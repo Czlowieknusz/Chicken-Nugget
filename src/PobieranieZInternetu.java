@@ -48,7 +48,7 @@ public class PobieranieZInternetu {
         return allinfo;
     }
 
-    public String readFromSynonimsDirectory(String word) throws IOException {
+    private String readFromSynonimsDirectory(String word) throws IOException {
         String allinfo = "";
         String url = "https://wordassociations.net/en/words-associated-with/";
         String charset = "UTF-8";
@@ -64,7 +64,7 @@ public class PobieranieZInternetu {
         return allinfo;
     }
 
-    public List<String> getSynonimsFromAllInfo(String infoFromWeb) throws IOException {
+    private List<String> getSynonimsFromAllInfo(String infoFromWeb) throws IOException {
         List<String> synonims = new LinkedList<>();
         String[] temp = infoFromWeb.split("(>)|(;)");
         int counter = 0;
