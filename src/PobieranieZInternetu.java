@@ -1,18 +1,16 @@
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
 import java.util.LinkedList;
 import java.util.List;
+import javax.swing.DefaultListModel;
 
 public class PobieranieZInternetu {
 
-    public List<String> getItemsList(List<String> queries) throws IOException {
+    public DefaultListModel getItemsList(List<String> queries) throws IOException {
         String query = fromListToString(queries);
         String allInfo = readFromGoogle(query);
         return getLinks(allInfo);
@@ -80,13 +78,13 @@ public class PobieranieZInternetu {
         return synonims;
     }
 
-    private List<String> getLinks(String allinfo) {
-        List<String> links = new LinkedList<>();
+    private DefaultListModel getLinks(String allinfo) {
+        DefaultListModel links = new DefaultListModel();
         String[] temp = allinfo.split("(>)|(;)");
         int counter = 0;
         for (String xx : temp) {
             if (xx.matches(("^<a href=.*")) && xx.matches(".*http.*") && !xx.matches((".*google.*"))) {
-                links.add(xx.substring(16, xx.length() - 4));
+                links.addElement(xx.substring(16, xx.length() - 4));
                 counter++;
             }
             if (counter > 2) {

@@ -3,15 +3,19 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JTextField;
+import javax.swing.ListModel;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
@@ -22,6 +26,7 @@ public class Window extends JFrame {
 	static JButton button1, button2, boy, girl, ds, find;
 	static JLabel spacer;
 	static JComboBox comboBoxSynonyms;
+	static JList list;
 	static String cattegory_string, max_price, gender_type;
 	static PobieranieZInternetu downloadFromInternet = new PobieranieZInternetu();
 
@@ -104,12 +109,15 @@ public class Window extends JFrame {
 				try {
 					List<String> synonims = downloadFromInternet.getSynonimsList(cattegory_string);
 					synonims.add(cattegory_string);
-					for (String i : synonims) {
-						System.out.println(i);
-					}
 					comboBoxSynonyms = new JComboBox(synonims.toArray());
 					frame.add(spacer = new JLabel("                    "));
 					frame.add(comboBoxSynonyms);
+					List<String> query = new LinkedList<String>();
+					query.add((String) comboBoxSynonyms.getSelectedItem());
+					query.add(max_price);
+					query.add("$");
+					list = new JList(downloadFromInternet.getItemsList(query));
+					frame.add(list);
 					frame.setVisible(true);
 				} catch (IOException ex) {
 					Logger.getLogger(Window.class.getName()).log(Level.SEVERE, null, ex);
