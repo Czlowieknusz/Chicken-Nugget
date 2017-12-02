@@ -1,6 +1,7 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
@@ -10,7 +11,7 @@ import javax.swing.DefaultListModel;
 
 public class PobieranieZInternetu {
 
-    public DefaultListModel getItemsList(List<String> queries) throws IOException {
+    public DefaultListModel getItemsList(List<String> queries) throws IOException, URISyntaxException {
         String query = fromListToString(queries);
         String allInfo = readFromGoogle(query);
         return getLinks(allInfo);
@@ -78,7 +79,7 @@ public class PobieranieZInternetu {
         return synonims;
     }
 
-    private DefaultListModel getLinks(String allinfo) {
+    private DefaultListModel getLinks(String allinfo){
         DefaultListModel links = new DefaultListModel();
         String[] temp = allinfo.split("(>)|(;)");
         int counter = 0;
