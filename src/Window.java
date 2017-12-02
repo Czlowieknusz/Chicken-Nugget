@@ -39,20 +39,25 @@ public class Window extends JFrame {
 
     Window() {
 
-        JFrame frame = new JFrame("Prezentowy Bot o zdumiewaj�cym imieniu Henryk");
+        JFrame frame = new JFrame("Christmas Bot Henryk!");
         frame.getContentPane().setLayout(new FlowLayout());
         cattegory = new JTextField(45);
         maxprice = new JTextField(45);
-
-        JLabel label = new JLabel("Give cattegory  ");
-        JLabel mprice = new JLabel("Maximum price");
-        JLabel gender = new JLabel("Select gender");
-        JLabel spac = new JLabel("                                                                                ");
+        cattegory.setFont(cattegory.getFont().deriveFont(18.0f));
+        maxprice.setFont(maxprice.getFont().deriveFont(18.0f));
+        
+        JLabel label = new JLabel("What would you like to buy? Christmas is coming... Lets find something!");
+        label.setFont (label.getFont ().deriveFont (18.0f));
+        JLabel mprice = new JLabel("What is your maximum budget?");
+        mprice.setFont (mprice.getFont ().deriveFont (18.0f));
+        JLabel gender = new JLabel("Does the gender matter??");
+        gender.setFont(gender.getFont().deriveFont(18.0f));
+        JLabel spac = new JLabel("               ");
 
         boy = new JButton("Male");
         girl = new JButton("Female");
         ds = new JButton("Doesn't matter");
-        find = new JButton("Find");
+        find = new JButton("Let's find something together!");
 
         boy.addActionListener(new ActionListener() {
             @Override
@@ -137,6 +142,23 @@ public class Window extends JFrame {
                         DefaultListModel temp = downloadFromInternet.getItemsList(query);
                         list.setModel(temp);
                     }
+                    
+                    comboBoxSynonyms.addActionListener(new ActionListener(){
+                        @Override
+                        public void actionPerformed(ActionEvent arg0) {
+                            DefaultListModel temp;
+                            try {
+                                temp = downloadFromInternet.getItemsList(query);
+                                //list.removeAll();
+                                list.setModel(temp);
+                                System.out.println("halo");
+                            } catch (IOException | URISyntaxException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                       
+                    });
+                    
                     list.addListSelectionListener(new ListSelectionListener() {
                         @Override
                         public void valueChanged(ListSelectionEvent e) {
@@ -171,10 +193,10 @@ public class Window extends JFrame {
         frame.add(ds);
         frame.add(spac);
         frame.add(find);
+        
         frame.setSize(640, 480);
         frame.setVisible(true);
         frame.setResizable(false);
-
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     }
