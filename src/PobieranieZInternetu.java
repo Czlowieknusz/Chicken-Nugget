@@ -28,6 +28,7 @@ public class PobieranieZInternetu {
         for (String i : queries) {
             result += i + "+";
         }
+        result += "+buy";
         return result;
     }
 
