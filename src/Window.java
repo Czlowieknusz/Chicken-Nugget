@@ -1,4 +1,5 @@
 
+import java.awt.Color;
 import java.awt.Desktop;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
@@ -62,27 +63,36 @@ public class Window extends JFrame {
         ds = new JButton("Doesn't matter");
         find = new JButton("Let's find something together!");
         ebe = new JButton("I have no idea, please help me :(");
-        age1 =new JButton("0-10");
-        age2 =new JButton("10-20");
-        age3 =new JButton("20+");
+        age1 =new JButton("Children");
+        age2 =new JButton("Teenagers");
+        age3 =new JButton("Adults");
         
         
     	age1.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				age=0;
+				age1.setBackground(Color.WHITE);
+				age2.setBackground(null);
+				age3.setBackground(null);
 			}
 		});
     	age2.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				age=1;
+				age1.setBackground(null);
+				age2.setBackground(Color.WHITE);
+				age3.setBackground(null);
 			}
 		});
     	age3.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				age=2;
+				age1.setBackground(null);
+				age2.setBackground(null);
+				age3.setBackground(Color.WHITE);
 			}
 		});
         
@@ -92,6 +102,9 @@ public class Window extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				gender_type = "men";
+				boy.setBackground(Color.WHITE);
+				girl.setBackground(null);
+				ds.setBackground(null);
 			}
 		});
 		
@@ -107,6 +120,9 @@ public class Window extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				gender_type = "women";
+				boy.setBackground(null);
+				girl.setBackground(Color.WHITE);
+				ds.setBackground(null);
 			}
 		});
 
@@ -114,6 +130,9 @@ public class Window extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				gender_type = "";
+				boy.setBackground(null);
+				girl.setBackground(null);
+				ds.setBackground(Color.WHITE);
 			}
 		});
 
