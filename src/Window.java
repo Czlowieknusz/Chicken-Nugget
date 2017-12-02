@@ -11,7 +11,7 @@ public class Window extends JFrame implements ActionListener{
 	
 	private static final long serialVersionUID = 1894037743641945270L;
 	static JTextField cattegory,maxprice;	
-	static JButton button1, button2,boy,girl,ds,janekgej;
+	static JButton button1, button2,boy,girl,ds,find;
 	Window(){
 		
 		
@@ -21,20 +21,16 @@ public class Window extends JFrame implements ActionListener{
 	frame.getContentPane().setLayout(new FlowLayout());
 	
 	
-	JLabel label = new JLabel("Give cattegory");
+	JLabel label = new JLabel("Give cattegory  ");
 	frame.add(label);
-	cattegory = new JTextField(40);
+	cattegory = new JTextField(45);
 	frame.getContentPane().add(cattegory);
-	button1 = new JButton("Save");
-	frame.add(button1);
 	
 	
 	JLabel mprice = new JLabel("Maximum price");
 	frame.add(mprice);
-	maxprice = new JTextField(40);
+	maxprice = new JTextField(45);
 	frame.add(maxprice);
-	button2 = new JButton("Save");
-	frame.add(button2);
 	
 	JLabel gender = new JLabel("Select gender");
 	frame.add(gender);
@@ -46,12 +42,13 @@ public class Window extends JFrame implements ActionListener{
 	
 	ds = new JButton("Doesn't matter");
 	frame.add(ds);
+	JLabel spac = new JLabel("                                                                                ");
+	frame.add(spac);
 	
 	
 	
-	
-	janekgej = new JButton("Find");
-			frame.add(janekgej);
+	find = new JButton("Find");
+			frame.add(find);
 	
 	
 	
@@ -75,6 +72,7 @@ public class Window extends JFrame implements ActionListener{
 	*/
 	frame.setSize(640,480);
 	frame.setVisible(true);
+	frame.setResizable(false);
 	
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	
